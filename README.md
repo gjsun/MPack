@@ -1,6 +1,6 @@
 # MPack
 
-MPack is a Python package for calculating the foreground masking strategy of C[II] line intensity mapping (Sun et al. 2016), which has been developed on the basis of the SIMSTACK algorithm (Viero et al. 2013). 
+MPack is a Python package for calculating the foreground masking strategy of C[II] line intensity mapping (Sun et al. 2016 https://arxiv.org/abs/1610.10095), which has been developed on the basis of the SIMSTACK algorithm (Viero et al. 2013). 
 
 ## People
 - Marco Viero - Stanford 
