@@ -5,6 +5,14 @@ import itertools
 
 from MPack_Core.utils import parameter_file as master_pf
 
+
+
+################################################################################
+### Plot the stacked flux density as a function of stellar mass and redshift ###
+################################################################################
+
+
+
 wvl_pf = master_pf.WavelengthsParameterFile()
 binning_pf = master_pf.BinningParameterFile()
 
@@ -17,8 +25,6 @@ m_mids_sf = (m_nodes_sf[0:-1]+m_nodes_sf[1::])/2.
 m_nodes_qt = binning_pf['m_nodes_qt']
 
 fig, ax = plt.subplots(2, 4, sharey=False, figsize=(16,8), dpi=200)
-
-ax.shape
 
 for i in range(nwv):
 	
