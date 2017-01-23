@@ -2,7 +2,7 @@ import numpy as np
 import sys, os
 
 
-def GetFields():
+def SetFields():
 	
 	Fields = ['uds']
 	#Fields = ['uds','uvsita_dr2']
@@ -23,7 +23,7 @@ def MapsParameterFile():
 	
 	current_path = os.path.dirname(__file__)
 	
-	field_to_stack = GetFields()
+	field_to_stack = SetFields()
 	
 	map_path = current_path + '/../data/maps/%s_maps/' % field_to_stack
 	mask_path = map_path + 'masks/'
@@ -74,11 +74,48 @@ def CatalogsParameterFile():
 	
 	
 	
+def WavelengthsParameterFile():
+	
+	# Decide which maps to include
+	wavelength=[24,100,160,250,350,500,850,1100]
+	wv0 = np.array([0,0,0,1,0,0,0,0])
+	indstack = np.where(wv0 == 1)
+
+	## Dictionary Names
+	library_keys =['mips24'
+				   ,'pacs_green'
+				   ,'pacs_red'
+				   ,'spire_PSW'
+				   ,'spire_PMW'
+				   ,'spire_PLW'
+				   ,'scuba850'
+				   ,'aztec'
+				  ]
+	
+	nwv = np.sum(wv0) 
+	fwhm =[6.32, 7.4, 11.3, 18.1, 25.2, 36.6, 15., 18.]
+	efwhm=[6.32, 6.7, 11.2, 17.6, 23.9, 35.2, 14.5, 18.] # want to the measured effective FWHM later
+	#color_correction=[1.25,1.01,23.58,23.82,1.018,0.9914,0.95615,1.0]
+	color_correction=[1.,1.,1.,1.,1.,1.,1.0E-3,1.]
+	#beam_area = [1.,1.,1.,1.,1.,1.,1.,1.,1.,1.] #sr
+	beam_area = [1.547E-9,1.,1.,1.,1.,1.,1.,1.] #sr
+	
+	pf = {
+		  'wavelength': wavelength
+		 ,'nwv': nwv
+		 ,'indstack': indstack
+		 ,'library_keys': library_keys
+		 ,'fwhm': fwhm
+		 ,'efwhm': efwhm
+		 ,'color_correction': color_correction
+		 ,'beam_area': beam_area
+		}
+	
+	return pf
+
 	
 	
-def BinningParameterFile():
-	
-	Binning_Scheme = "UNI"
+def BinningParameterFile(Binning_Scheme = "UNI"):
 	
 	if Binning_Scheme == "UNI":
 		z_nodes = np.array([0.0,0.5,1.0,1.5,2.0,2.5,3.0,3.5,4.0])
