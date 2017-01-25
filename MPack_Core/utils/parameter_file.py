@@ -29,6 +29,16 @@ def MapsParameterFile():
 	mask_path = map_path + 'masks/'
 	pixsize_suffix = '4.0_arcsec_pixels'
 	
+	# Pixel sizes in arcsec (UDS/UVISTA): 
+	# 24um: 1.2/1.2
+	# 100um: 2.0/1.2
+	# 160um: 3.0/2.4
+	# 250um: 4.0/6.0
+	# 350um: 4.0/6.0
+	# 500um: 4.0/6.0
+	# 850um: 2.0/1.0
+	# 1100um: 3.0/6.0
+	
 	pf = {
 		  '24_img': map_path + 'mips_mosaic.fits'
 		 ,'24_rms': map_path + 'mips_mosaic_unc.fits'
