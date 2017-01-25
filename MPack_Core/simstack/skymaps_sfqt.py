@@ -72,7 +72,7 @@ class Skymaps:
 		self.psf = kern
 
 	def beam_area_correction(self,beam_area):
-		self.map *= beam_area * 1e6
+		self.map *= beam_area * 1e6   # 1e6 from MJy to Jy
 		
 	def add_wavelength(self,wavelength):
 		self.wavelength = wavelength
